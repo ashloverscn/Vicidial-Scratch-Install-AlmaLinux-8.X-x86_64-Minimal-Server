@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo -e "\e[0;32m Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server \e[0m"
+echo -e "\e[0;32m Vicidial-Scratch-Install-AlmaLinux-9.X-x86_64-Minimal-Server \e[0m"
 echo -e "\e[0;32m Part0 System-HW-Prepration \e[0m"
 sleep 5
 
@@ -68,9 +68,9 @@ sleep 2
 
 uname -r
 rpm -qa kernel\*
-dnf remove --oldinstallonly --setopt installonly_limit=0 kernel
+dnf -y remove --oldinstallonly --setopt installonly_limit=0 kernel
 sed -i 's/^installonly_limit=.*/installonly_limit=0/' /etc/dnf/dnf.conf
-dnf autoremove
+dnf -y autoremove
 sed -i 's/rhgb//g' /etc/default/grub
 sed -i 's/quiet//g' /etc/default/grub
 sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/g' /etc/default/grub
@@ -81,5 +81,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 sleep 2
 
 #/usr/src/./enable-PrintMotd.sh
+#wget -O /usr/src/motd https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-9.X-x86_64-Minimal-Server/raw/refs/heads/main/motd
+\cp -r /usr/src/motd ~/.motd
+echo "sed -i 's/^cat ~\\/\\.motd\$/\n/' ~/.bashrc && echo 'cat ~/.motd' >> ~/.bashrc" >> ~/.bashrc
 
 #reboot
