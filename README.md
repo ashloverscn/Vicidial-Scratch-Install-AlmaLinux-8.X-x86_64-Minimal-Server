@@ -6,7 +6,7 @@ https://mega.nz/file/Ry9UiIyQ#gNofNbMnoEpGlzp5iVfyEyVs5zk_Hk1phFeNvKhU4GU
 
 FOR ANY HELP CONTACT 
 
-PhNo1: +917278963247 (whatsapp)/PhNo2: +918777246851 (whatsapp)
+PhNo1: +917278963247 (whatsapp)/PhNo2: +918777246851  (whatsapp)
 
 www.facebook.com/ashishsharma1992
 
