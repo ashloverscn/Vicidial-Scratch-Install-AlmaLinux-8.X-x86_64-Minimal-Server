@@ -13,25 +13,26 @@ echo -e "\e[0;32m Install Asterisk v$ver \e[0m"
 sleep 2
 cd /usr/src
 #rm -rf asterisk*
-#yum remove asterisk -y
-#yum remove asterisk-* -y
-yum install asterisk -y
-yum install asterisk-* -y
-if [ $oem -eq 1 ]
+yum remove asterisk -y
+yum remove asterisk-* -y
+#yum install asterisk -y
+#yum install asterisk-* --exclude=kernel-debug* -y
+
+if [ $oem -eq 0 ]
 then
 wget -O asterisk-$ver-vici.tar.gz http://download.vicidial.com/$subdr/asterisk-$ver-vici.tar.gz
 tar -xvzf asterisk-$ver-vici.tar.gz
 cd asterisk-$ver-vici
 
-else
+elif [ $oem -eq 1 ]
+then
 wget -O asterisk-$ver.tar.gz https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$ver.tar.gz
 tar -xvzf asterisk-$ver.tar.gz
 cd asterisk-$ver
-wget https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$ver-patch.tar.gz
-tar -xvzf asterisk-$ver-patch.tar.gz
+#wget https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$ver-patch.tar.gz
+#tar -xvzf asterisk-$ver-patch.tar.gz
 #patch if needed
 #patch -p0 < asterisk-$ver-patch
-
 fi
 
 #: ${JOBS:=$(( $(nproc) + $(nproc) / 2 ))}
@@ -89,3 +90,9 @@ systemctl disable asterisk.service && \
 systemctl enable asterisk.service && \
 systemctl restart asterisk.service && \
 systemctl status asterisk.service | head -n 18
+
+\cp -r /asterisk.sh /asterisk.sh.bak
+rm -rf /asterisk.sh
+\cp -r  /usr/src/asterisk.sh /asterisk.sh
+
+chmod +x /asterisk.sh
