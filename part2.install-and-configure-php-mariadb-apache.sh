@@ -5,12 +5,12 @@ sleep 2
 
 dnf groupinstall "Development Tools" -y
 
-#dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+#dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 #dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.0.noarch.rpm -y
 
-#dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
-dnf install https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+#dnf install https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
 #dnf install https://rpms.remirepo.net/enterprise/remi-release-10.0.rpm -y
 
 dnf -y install yum-utils
