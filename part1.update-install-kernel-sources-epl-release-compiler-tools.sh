@@ -13,6 +13,7 @@ yum -y install kernel
 yum -y install kernel-* --exclude=kernel-debug* -y
 #yum -y remove kernel-debug*
 #yum install -y kernel-devel-$(uname -r) kernel-headers-$(uname -r)
+yum -y reinstall kernel-devel
 
 echo -e "\e[0;32m Disable SeLinux \e[0m"
 sleep 2
@@ -23,4 +24,3 @@ echo -e "\e[0;32m Please run /usr/src/./install.sh again after this boot\e[0m"
 echo -e "\e[0;32m System will REBOOT in 50 Seconds \e[0m"
 sleep 50 
 reboot
-
