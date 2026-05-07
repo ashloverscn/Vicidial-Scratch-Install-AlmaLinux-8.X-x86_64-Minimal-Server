@@ -7,7 +7,7 @@
 #subdr=beta-apps
 subdr=required-apps
 ver=18.21.0
-oem=1
+oem=0
 
 echo -e "\e[0;32m Install Asterisk v$ver \e[0m"
 sleep 2
