@@ -46,6 +46,7 @@ mv ./Vicidial-Scratch-Install-*/* ./
 rm -rf ./Vicidial-Scratch-Install-*
 
 chmod +x *.sh
+chmod +x ./archive/*.sh
 
 pwd
 
