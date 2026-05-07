@@ -23,53 +23,20 @@ else
 	tar -xvzf dahdi-linux-complete-$ver+$ver.tar.gz
 	cd dahdi-linux-complete-$ver+$ver
 
-	#####################################################################################################################################################
-	echo "[+] Applying DAHDI EL9 kernel compatibility fixes..."
+#####################################################################################################################################################
+	echo "Applying DAHDI kernel compatibility fixes..."
 	
-	# --------------------------------------------------
-	# 1. Fix DEFINE_SEMAPHORE (new kernel requires count)
-	# --------------------------------------------------
-	echo "[*] Fixing DEFINE_SEMAPHORE..."
-	find linux/drivers/dahdi -type f -name "*.c" -exec sed -i \
-	's/DEFINE_SEMAPHORE(\([a-zA-Z0-9_]*\));/DEFINE_SEMAPHORE(\1, 1);/g' {} +
+	# Fix DEFINE_SEMAPHORE old syntax
+	sed -i 's/DEFINE_SEMAPHORE(stop, 1)/DEFINE_SEMAPHORE(stop)/' \
+	linux/drivers/dahdi/voicebus/voicebus.c
 	
-	# --------------------------------------------------
-	# 2. Fix MAX macro conflicts
-	# --------------------------------------------------
-	echo "[*] Fixing MAX macro conflicts..."
-	find linux/drivers/dahdi -type f -name "*.c" -exec sed -i \
-	-e 's/#define MAX \([0-9]\+\)/#define RETRY_MAX \1/g' \
-	-e 's/\<MAX\>/RETRY_MAX/g' {} +
-	
-	# --------------------------------------------------
-	# 3. Fix uevent const correctness
-	# --------------------------------------------------
-	echo "[*] Fixing uevent signatures..."
-	find linux/drivers/dahdi -type f -name "*.c" -exec sed -i \
-	's/int[[:space:]]\+\([a-zA-Z0-9_]*_uevent\)(struct device \*/int \1(const struct device */g' {} +
-	
-	# --------------------------------------------------
-	# 4. Fix class_create API change
-	# --------------------------------------------------
-	echo "[*] Fixing class_create API..."
-	find linux -type f -name "*.c" -exec sed -i \
-	's/class_create(THIS_MODULE, *"\([^"]*\)")/class_create("\1")/g' {} +
-	
-	# --------------------------------------------------
-	# 5. Fix deprecated workqueue call (safe)
-	# --------------------------------------------------
-	echo "[*] Fixing workqueue API..."
-	find linux/drivers/dahdi -type f -name "*.c" -exec sed -i \
-	's/flush_scheduled_work()/flush_workqueue(system_wq)/g' {} +
-	
-	# --------------------------------------------------
-	# 6. Disable -Werror
-	# --------------------------------------------------
-	echo "[*] Disabling -Werror..."
-	sed -i 's/-Werror//g' linux/Makefile
+	# Fix netif_napi_add old syntax
+	sed -i 's/netif_napi_add(netdev, \&wc->napi, \&wctc4xxp_poll, 64)/netif_napi_add(netdev, \&wc->napi, wctc4xxp_poll)/' \
+	linux/drivers/dahdi/wctc4xxp/base.c
 	
 	echo "[+] All fixes applied. You can now run make."
-	#####################################################################################################################################################
+
+#####################################################################################################################################################
 fi
 
 #: ${JOBS:=$(( $(nproc) + $(nproc) / 2 ))}
