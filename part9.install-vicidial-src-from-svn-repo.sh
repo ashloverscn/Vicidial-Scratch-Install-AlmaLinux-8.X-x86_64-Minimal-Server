@@ -148,6 +148,7 @@ EOF
 
 systemctl daemon-reload
 systemctl enable rc-local.service
+#systemctl start rc-local.service &
 systemctl start rc-local.service &
 
 ## fix server external ip error
