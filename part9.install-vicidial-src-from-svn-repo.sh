@@ -72,8 +72,8 @@ sleep 2
 
 echo -e "\e[0;32m Update server ip \e[0m"
 sleep 2
-/usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15
-#/usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15 --server_ip=$serveripadd --auto
+#/usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15
+/usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15 --server_ip=$serveripadd --auto
 
 echo -e "\e[0;32m Doing Some BUG FIX \e[0m"
 #This is some kind of bug fix to bring back version info in the report panel by carpenox idont know much 
