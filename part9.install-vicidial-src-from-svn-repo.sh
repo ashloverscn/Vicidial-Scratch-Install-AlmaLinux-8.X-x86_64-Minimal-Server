@@ -75,6 +75,23 @@ sleep 2
 #/usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15
 /usr/share/astguiclient/ADMIN_update_server_ip.pl --old-server_ip=10.10.10.15 --server_ip=$serveripadd --auto
 
+echo -e "\e[0;32m Fix audio files not visible from audio store and moh file browser and enable audio Store by default \e[0m"
+sleep 2
+# Retrieve the IP address
+#serveripadd=$(hostname -I | awk '{print $1}')
+#echo "serveripadd is "$serveripadd
+mysql -u root -D asterisk -sN -e "UPDATE system_settings SET sounds_web_server = '${serveripadd}', sounds_web_directory = '', sounds_central_control_active = '1';"
+/usr/share/astguiclient/ADMIN_audio_store_sync.pl --upload --debugX
+sounds_web_directory=$(mysql -u root -D asterisk -sN -e "SELECT sounds_web_directory FROM system_settings LIMIT 1")
+echo "sounds_web_directory = "$sounds_web_directory
+mkdir /var/www/html/$sounds_web_directory/
+chmod 777 /var/www/html/$sounds_web_directory/
+chown apache:apache /var/www/html/$sounds_web_directory/
+ln -s /var/lib/asterisk/sounds/* /var/www/html/$sounds_web_directory/
+## removing the link :
+#cd /var/www/html/$sounds_web_directory/
+#find . -type l -exec rm {} +
+
 echo -e "\e[0;32m Doing Some BUG FIX \e[0m"
 #This is some kind of bug fix to bring back version info in the report panel by carpenox idont know much 
 perl install.pl --no-prompt
