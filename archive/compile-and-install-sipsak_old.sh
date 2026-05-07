@@ -1,3 +1,4 @@
+
 #!/bin/sh
 
 #https://568588.bugs.gentoo.org/attachment.cgi?id=419546

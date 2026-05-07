@@ -16,4 +16,3 @@ make install
 mkdir /tmp/eaccelerator
 chmod 0777 /tmp/eaccelerator
 php -v
-

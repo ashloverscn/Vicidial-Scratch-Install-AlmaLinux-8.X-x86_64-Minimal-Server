@@ -1,0 +1,83 @@
+86% of storage used … If you run out of space, you can't save to Drive, back up Google Photos, or use Gmail. Get 30 GB of storage for ₹59 ₹15/month for 3 months.
+crontab -e
+
+### asterisk dahdi dead reckon
+#@reboot sh /home/asterisk.sh >/dev/null 2>&1
+#@reboot sh /home/dahdi.sh >/dev/null 2>&1
+* * * * * sh /home/asterisk.sh >/dev/null 2>&1
+* * * * * sh /home/dahdi.sh >/dev/null 2>&1
+
+nano /home/dahdi.sh
+
+#!/bin/bash
+
+service=$@dahdi
+/bin/systemctl -q is-active "$service.service"
+status=$?
+if [ "$status" == 0 ]; then
+    echo "$status"
+    echo "OK"
+else
+    modprobe "$service"
+    sleep 5
+    /bin/systemctl restart "$service.service"
+fi
+
+nano /home/asterisk.sh
+
+#!/bin/bash
+
+service=$@asterisk
+/bin/systemctl -q is-active "$service.service"
+status=$?
+if [ "$status" == 0 ]; then
+    echo "$status"
+    echo "OK"
+else
+    /bin/systemctl restart "$service.service"
+fi
+
+
+chmod +x /home/dahdi.sh
+chmod +x /home/asterisk.sh 
+
+####### Vicibox 9 Unable to connect to remote asterisk (does /~/asterisk.ctl exist?) ########
+zypper ref && zypper up -y
+
+after which vicibox9 will fully be updated with some partialy missing python and dracut dependencies
+
+and asterisk will fail to start with an error
+
+i.e.
+
+Error: Vicibox 9 installation - Unable to connect to remote asterisk (does /var/run/asterisk/asterisk.ctl exist?)- 6 sockets
+
+to fix asterisk error enter the command 
+
+i.e.
+
+zypper in openSUSE-Leap-15.1-ViciDial:libjansson4
+
+reboot
+
+############################## links #####################################
+
+https://zeropointdevelopment.com/how-to-use-a-bash-script-to-restart-linux-server-services/
+
+https://ma.ttias.be/auto-restart-crashed-service-systemd/
+
+https://serverfault.com/questions/252137/how-to-automatically-restart-a-service-on-failure-in-linux
+
+https://www.cyberciti.biz/tips/howto-monitor-and-restart-linux-unix-service.html
+
+https://geekflare.com/auto-restart-services-when-down/
+
+https://www.2daygeek.com/linux-systemd-auto-restart-services-when-down/
+
+https://singlebrook.com/2017/10/23/auto-restart-crashed-service-systemd/
+
+https://phoenixnap.com/kb/crontab-reboot
+
+https://www.cyberciti.biz/faq/linux-execute-cron-job-after-system-reboot/
+
+

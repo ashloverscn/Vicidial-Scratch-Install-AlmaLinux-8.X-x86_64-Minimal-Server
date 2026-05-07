@@ -66,4 +66,3 @@ reboot
 #to transfer backup to a new server
 #\scp -r /usr/src/complete_backup_vicibox11_45.142.112.124.sql root@45.142.112.126:/usr/src/
 
-

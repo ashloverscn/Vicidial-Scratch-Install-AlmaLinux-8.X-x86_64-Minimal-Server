@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # DNS name to resolve
@@ -21,3 +20,5 @@ firewall-cmd --reload
 service firewalld stop
 certbot renew
 service firewalld start
+
+

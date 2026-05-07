@@ -1,0 +1,69 @@
+## override all local user's settings ##
+
+export LC_ALL=C
+
+## Setup timezone ##
+
+timedatectl status
+
+timedatectl list-timezones | grep Asia/C && timedatectl list-timezones | grep Asia/K
+
+timedatectl set-timezone Asia/Calcutta && timedatectl status
+
+## Setup hostname and reverse domain pointing ##
+
+## Setup hostname
+
+hostnamectl status | grep Static
+
+hostnamectl set-hostname 1.vicibox-alma9.SASoftwares.com
+
+cat /etc/hostname
+
+hostname
+
+## Setup reverse ip binding to the hostname
+
+echo "74.208.213.152   1.vicibox-alma9.SASoftwares.com" | cat >> /etc/hosts
+
+cat /etc/hosts
+
+## install some nescessary tool packages ##
+
+dnf -y check-update
+
+dnf -y install wget git unzip NetworkManager net-tools nano expect bash-completion bash-completion-*
+
+systemctl restart network
+
+service network restart
+
+## clone the repo to run scripts as follows ##
+
+cd /usr/src
+
+dnf -y check-update
+
+dnf -y install wget git unzip net-tools nano expect bash-completion bash-completion-*
+
+wget -O ./Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server.zip https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/archive/refs/heads/main.zip
+
+unzip ./Vicidial-Scratch-Install-*
+
+rm -rf ./Vicidial-Scratch-Install-*.zip
+
+mv ./Vicidial-Scratch-Install-*/* ./
+
+rm -rf ./Vicidial-Scratch-Install-*
+
+chmod +x *.sh
+
+pwd
+
+## from here vicidial installation begins
+
+./part0.system-hw-prepration.sh
+
+./Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/blob/main/part1.update-install-kernel-sources-epl-release-compiler-tools.sh
+./Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/blob/main/part2.install-and-configure-php-mariadb-apache.sh
+
