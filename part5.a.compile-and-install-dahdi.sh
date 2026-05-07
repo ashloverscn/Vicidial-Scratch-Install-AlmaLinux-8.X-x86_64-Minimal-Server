@@ -13,12 +13,13 @@ yum remove dahdi* -y
 yum remove dahdi-tools* -y
 #yum install dahdi* -y
 #yum install dahdi-tools* -y
-if [ $oem -eq 1 ]
+if [ $oem -eq 0 ]
 then
 	wget http://download.vicidial.com/required-apps/dahdi-linux-complete-2.3.0.1+2.3.0.tar.gz
 	tar -xvzf dahdi-linux-complete-2.3.0.1+2.3.0.tar.gz
 	cd dahdi-linux-complete-2.3.0.1+2.3.0
-else
+elif [ $oem -eq 1 ]
+then
 	wget -O dahdi-linux-complete-$ver+$ver.tar.gz https://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-$ver+$ver.tar.gz
 	tar -xvzf dahdi-linux-complete-$ver+$ver.tar.gz
 	cd dahdi-linux-complete-$ver+$ver
