@@ -93,6 +93,7 @@ ln -s /var/lib/asterisk/sounds/* /var/www/html/$sounds_web_directory/
 #find . -type l -exec rm {} +
 
 echo -e "\e[0;32m Doing Some BUG FIX \e[0m"
+sleep 2
 #This is some kind of bug fix to bring back version info in the report panel by carpenox idont know much 
 perl install.pl --no-prompt
 /usr/share/astguiclient/ADMIN_audio_store_sync.pl --upload
