@@ -1,5 +1,5 @@
 #!/bin/sh
-ver=2.3.0
+ver=2.8.0
 echo -e "\e[0;32m Install libsrtp v$ver \e[0m"
 sleep 2
 cd /usr/src
