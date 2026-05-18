@@ -34,7 +34,7 @@ cd /usr/src
 
 yum -y install wget git
 
-wget https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/raw/main/install.sh
+wget https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server/raw/main/install.sh
 
 chmod +x install.sh
 
@@ -64,9 +64,9 @@ cd /usr/src
 
 yum -y install wget git
 
-git clone https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server.git
+git clone https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server.git
 
-cd Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server
+cd Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server
 
 chmod +x install.sh
 
