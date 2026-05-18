@@ -14,7 +14,7 @@ while [ $sec -gt 0 ]; do
 	clear
 	let "sec=sec-1"
 	echo -ne "${GREEN}"
-	echo -e "Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server"
+	echo -e "Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server"
 	echo -ne "${YELLOW}"
 	echo -e "$(printf "INSTALLATION WILL START IN") $(printf "%02d" $sec) $(printf "SECONDS")\033[0K\r"
 	sleep 1
@@ -35,7 +35,7 @@ yum -y check-update
 
 yum -y install wget git unzip net-tools expect bash-completion bash-completion-extras
 
-#wget -O ./Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server.zip https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/archive/refs/heads/main.zip
+#wget -O ./Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server.zip https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server/archive/refs/heads/main.zip
 
 #unzip ./Vicidial-Scratch-Install-*
 
@@ -81,7 +81,7 @@ chmod +x /usr/src/install.sh
 #./viciphone-webrtc-install.sh
 #./cleanup.sh
 
-echo -e "\e[0;32m Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server Installation Complete! \e[0m"
+echo -e "\e[0;32m Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server Installation Complete! \e[0m"
 echo -e "\e[0;32m System will REBOOT in 50 Seconds \e[0m"
 sleep 50 
 reboot
