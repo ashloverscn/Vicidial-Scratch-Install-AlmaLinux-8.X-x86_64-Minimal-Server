@@ -1,5 +1,7 @@
-#For Vicidial-Scratch-Install-AlmaLinux-9.x-x86_64-Minimal-Server 
+For Vicidial-Scratch-Install-AlmaLinux-9.x-x86_64-Minimal-Server 
+
 Visit this Link : https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-9.X-x86_64-Minimal-Server
+
 # Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server
 
 # Install VirtualBox and VirtualBox-Addons and grab 
