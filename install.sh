@@ -14,7 +14,7 @@ while [ $sec -gt 0 ]; do
 	clear
 	let "sec=sec-1"
 	echo -ne "${GREEN}"
-	echo -e "Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server"
+	echo -e "Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server"
 	echo -ne "${YELLOW}"
 	echo -e "$(printf "INSTALLATION WILL START IN") $(printf "%02d" $sec) $(printf "SECONDS")\033[0K\r"
 	sleep 1
@@ -36,7 +36,7 @@ dnf -y check-update
 
 dnf -y install wget git unzip net-tools nano expect bash-completion bash-completion-*
 
-wget -O ./Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server.zip https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.8-x86_64-Minimal-Server/archive/refs/heads/main.zip
+wget -O ./Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server.zip https://github.com/ashloverscn/Vicidial-Scratch-Install-AlmaLinux-8.X-x86_64-Minimal-Server/archive/refs/heads/main.zip
 
 unzip ./Vicidial-Scratch-Install-*
 
