@@ -7,7 +7,7 @@
 #subdr=beta-apps
 subdr=required-apps
 ver=18.26.4
-oem=1
+oem=0
 
 echo -e "\e[0;32m Install Asterisk v$ver \e[0m"
 sleep 2
@@ -18,13 +18,13 @@ yum remove asterisk-* -y
 #yum install asterisk -y
 #yum install asterisk-* --exclude=kernel-debug* -y
 
-if [ $oem -eq 0 ]
+if [ $oem -eq 1 ]
 then
 wget -O asterisk-$ver-vici.tar.gz http://download.vicidial.com/$subdr/asterisk-$ver-vici.tar.gz
 tar -xvzf asterisk-$ver-vici.tar.gz
 cd asterisk-$ver-vici
 
-elif [ $oem -eq 1 ]
+elif [ $oem -eq 0 ]
 then
 wget -O asterisk-$ver.tar.gz https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$ver.tar.gz
 tar -xvzf asterisk-$ver.tar.gz
