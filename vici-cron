@@ -52,7 +52,7 @@
 3 1 * * * /usr/share/astguiclient/AST_DB_optimize.pl
 
 ## adjust time on the server with ntp
-#30 * * * * /usr/sbin/ntpdate -u pool.ntp.org 2>/dev/null 1>&amp;2
+30 * * * * /usr/sbin/ntpdate -u pool.ntp.org 2>/dev/null 1>&2
 
 ### VICIDIAL agent time log weekly and daily summary report generation
 2 0 * * 0 /usr/share/astguiclient/AST_agent_week.pl
