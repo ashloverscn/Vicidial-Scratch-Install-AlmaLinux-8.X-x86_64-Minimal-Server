@@ -23,6 +23,9 @@
 ### keepalive script for astguiclient processes
 * * * * * /usr/share/astguiclient/ADMIN_keepalive_ALL.pl
 
+### Timeclock keepalive / watcher
+* * * * * /usr/share/astguiclient/AST_timeclock_warp.pl
+
 ### kill Hangup script for Asterisk updaters
 * * * * * /usr/share/astguiclient/AST_manager_kill_hung_congested.pl
 
@@ -73,7 +76,6 @@
 #26 1 * * * /usr/bin/find /var/spool/asterisk/monitorDONE/MP3 -maxdepth 2 -type f -mtime +65 -print | xargs rm -f
 #25 1 * * * /usr/bin/find /var/spool/asterisk/monitorDONE/FTP -maxdepth 2 -type f -mtime +1 -print | xargs rm -f
 24 1 * * * /usr/bin/find /var/spool/asterisk/monitorDONE/ORIG -maxdepth 2 -type f -mtime +1 -print | xargs rm -f
-
 
 ### roll logs monthly on high-volume dialing systems
 30 1 1 * * /usr/share/astguiclient/ADMIN_archive_log_tables.pl --days=90
